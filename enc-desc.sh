@@ -10,8 +10,10 @@ file=$2
 valueEnc=$3
 
 if [ -z $file ]; then
-	echo ''
-	echo 'El segundo argumento no puede ir vacío. Debes de escribir el nombre del archivo.'
+	echo -e '\nDebe pasar como segundo parámetro la acción a realizar.\n'
+	
+	echo 'Optiones:'
+	echo 'enc: encriptar | dec: desencriptar'
 	exit
 fi
 
@@ -32,6 +34,6 @@ case $opt in
 		echo -e '\n'
 
 		echo 'Optiones:'
-		echo 'enc: encriptar | desc: desencriptar'
+		echo 'enc: encriptar | dec: desencriptar'
 		;;
 esac;
