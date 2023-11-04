@@ -1,12 +1,12 @@
-# script para encriptar o desecriptar archivos
+# Script to encrypt or decrypt values or values in a file
  
 # Options
 encrypt='enc'
 decrypt='dec'
 
 # Arguments
-opt=$1
-file=$2
+opt=$1 # Options. Must be enc or dec
+file=$2 # File to save the value encrypt or file to decrypt
 valueEnc=$3
 
 if [ -z $file ]; then
@@ -17,9 +17,18 @@ if [ -z $file ]; then
 	exit
 fi
 
+isFile() {
+	if [ -f $valueEnc ]; then # verify if value is a file
+		cat $valueEnc >> file.txt
+	else
+		echo $valueEnc > file.txt
+	fi
+}
+
 case $opt in
 	$encrypt)
-		echo $valueEnc > file.txt
+
+		isFile # Evalute if the value to enc is a file
 
 		openssl enc -aes-256-cbc -pbkdf2 -salt -iter 100 -in file.txt -out $file
 
