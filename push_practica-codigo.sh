@@ -6,5 +6,5 @@
 cd ~/scripts
 
 git add .
-git commit -m "$(date +"%Y-%m-%d %X")"
+git commit -m "$(date +"%d-%m-%Y %X")"
 #git push origin main
